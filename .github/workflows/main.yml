@@ -3,20 +3,17 @@ on: [push, pull_request]
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
+    name: goreleaser
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Unshallow
-        run: git fetch --prune --unshallow
-      - name: Set up Go
-        uses: actions/setup-go@v1
-        with:
-          go-version: 1.13.x
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v1
-        with:
-          version: latest
-          args: release --rm-dist --snapshot
-          key: ${{ secrets.YOUR_PRIVATE_KEY }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Set up Go
+      uses: actions/setup-go@v1
+      with:
+        go-version: 1.13
+      id: go
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v1
+    - name: goreleaser
+      uses: goreleaser/goreleaser-action@master
+      with:
+        args: release --rm-dist --snapshot
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
