@@ -1,0 +1,8 @@
+version: '3.7'
+services:
+  test:
+    image: golang:alpine
+    command: go test -v ./
+    working_dir: /go/src/github.com/serious-company/ssh-layer
+    volumes:
+      - .:/go/src/github.com/serious-company/ssh-layer

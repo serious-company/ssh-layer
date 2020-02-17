@@ -1,0 +1,16 @@
+# Golang binaries
+bin
+release
+
+# Coverage data
+coverage.out
+
+# Editor files
+.vscode
+
+# Secrets
+!secrets/.gitkeep
+secrets/
+
+# Vendor
+vendor/

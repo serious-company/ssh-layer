@@ -1,0 +1,10 @@
+builds:
+- binary: ssh-layer
+  main: cmd/**.go
+  goos:
+  - linux
+  goarch:
+  - amd64
+  env:
+    - CGO_ENABLED=0
+    - GO111MODULE=on
