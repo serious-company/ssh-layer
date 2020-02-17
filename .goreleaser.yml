@@ -1,6 +1,6 @@
 builds:
 - binary: ssh-layer
-  main: cmd/**.go
+  main: cmd/main.go
   goos:
   - linux
   goarch:
