@@ -24,4 +24,3 @@ jobs:
       uses: goreleaser/goreleaser-action@master
       with:
         args: release --rm-dist --snapshot
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
