@@ -12,6 +12,14 @@ jobs:
       id: go
     - name: Check out code into the Go module directory
       uses: actions/checkout@v1
+    - name: Setup SSH Keys and known_hosts
+      env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+      run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
     - name: goreleaser
       uses: goreleaser/goreleaser-action@master
       with:
